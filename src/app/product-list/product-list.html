@@ -1,0 +1,32 @@
+<section class="product-list">
+  <h2>Nos produits</h2>
+  <button (click)="showAll()">TOUS</button>
+  <button (click)="showInStock()">Disponibles </button>
+  <button (click)="showLuxury()">Plus de 1 000 €</button>
+  
+  <ul>
+    @for (product of visibleProducts; track product.id) {
+      <li>
+        {{ product.title }} : {{ product.price }} €
+        @switch (product.availabilityStatus) {
+          @case ('In Stock') {
+            <span>En stock</span>
+          }
+          @case ('Low Stock') {
+            <span>Plus que {{ product.stock }}</span>
+          }
+          @default {
+            <span>Rupture</span>
+          }
+        }
+     
+      </li>
+    } @empty {
+      <li>Aucun produit à afficher</li>
+    }
+  </ul>
+
+  <app-product-card />
+  <app-product-card />
+  <app-product-card />
+</section>
