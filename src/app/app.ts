@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, effect } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './header/header';  
 import { ProductList } from './product-list/product-list';
@@ -14,13 +14,21 @@ import { Product } from './models/product.model';
 export class App {
   protected readonly title = signal('training-front');
   
-  cart: Product[] = [];
+  cart = signal<Product[]>([]);
   
   onadd(product: Product): void {
-    this.cart = [...this.cart, product]; // un nouveau tableau : l'ancien + ce produit
+    this.cart.update((cart) => [...cart, product]);
   } 
 
   onClear(): void {
-    this.cart = [];
+    this.cart.set([]);
   }
+
+
+
+  constructor() {
+  effect(() => {
+    console.log('Le panier a changé :', this.cart().length, 'article(s)'); // une ligne par changement
+  });
+}
 }

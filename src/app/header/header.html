@@ -2,6 +2,7 @@
   <h1>Training Shop</h1>
   <p>Le catalogue d'entraînement</p>
 
-  <p>🛒 {{ count() }} article(s)</p>
+  <p>🛒 {{ count() }} article(s) pour un total de {{ total().toFixed(2) }} €</p>
+  <p>{{ shipping() }}</p>
   <button (click)="clear.emit()">Vider le panier</button>
 </header>
