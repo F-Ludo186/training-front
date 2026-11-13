@@ -1,6 +1,6 @@
-import { Component , input, output, signal, computed} from '@angular/core';
-import { Product } from '../models/product.model';
+import { Component , signal, inject} from '@angular/core';
 import { RouterLink  } from '@angular/router';
+import { CartService } from '../cart.service';
 
 @Component({
   imports: [RouterLink ],
@@ -9,8 +9,7 @@ import { RouterLink  } from '@angular/router';
   templateUrl: './header.html',
 })
 export class Header {
-  cart = input.required<Product[]>();
-  clear = output<void>();
+  cart = inject(CartService);
 
   // count et clear restent là, sans changement
   shipping = signal('Calcul des frais de port…');
@@ -21,8 +20,4 @@ export class Header {
     }, 2000);
   }
 
-  count = computed(() => this.cart().length); // se recalcule quand cart change
-  total = computed(() =>
-    this.cart().reduce((sum, product) => sum + product.price, 0),
-  );
 }

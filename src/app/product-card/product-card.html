@@ -1,12 +1,16 @@
 <article class="product-card">
+    <a
+      class="product-card__link"
+      [routerLink]="['/products', product().id]"
+      [attr.aria-label]="'Voir le produit ' + product().title"
+    ></a>
     <img [src]="product().thumbnail" [alt]="product().title" />
     <h3>{{ product().title }}</h3>
     <p>{{ product().price }} €</p>
-        
-    @if(product().stock > 0) {
-      <button (click)="onAddClick()">Ajouter au panier</button>
+    <p>Dans ton panier : {{ cart.quantityOf(product()) }}</p>
+     @if(product().stock > 0) {
+      <button (click)="cart.add(product())">Ajouter au panier</button>
     }@else {
       <p>Victime de son succès</p>
     }
-    <p>Dans ton panier : {{ quantity() }}</p>
   </article>

@@ -6,3 +6,12 @@
 .product-detail img {
   width: 160px;
 }
+
+.product-detail button {
+  display: block;
+  background-color: #ea0404;
+  color: white;
+  border-radius: 10px;
+  height: 40px;
+}
+

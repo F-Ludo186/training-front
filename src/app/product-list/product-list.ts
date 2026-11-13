@@ -10,13 +10,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './product-list.css',
   templateUrl: './product-list.html',
 })
+
 export class ProductList {
   products: Product[] = catalog;
   visibleProducts: Product[] = catalog;
   
-  cart = input.required<Product[]>();
-  addToCart = output<Product>();
-
   showAll(): void {
     this.visibleProducts = this.products;
   }
@@ -27,9 +25,5 @@ export class ProductList {
 
   showLuxury(): void {
     this.visibleProducts = this.products.filter((product) => product.price > 1000);
-  }
-
-  quantityOf(product: Product): number {
-    return this.cart().filter((item) => item.id === product.id).length;
   }
 }

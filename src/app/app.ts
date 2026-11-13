@@ -1,8 +1,9 @@
-import { Component, signal, effect } from '@angular/core';
+import { Component, signal, effect, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './header/header';  
 import { ProductList } from './product-list/product-list';
-import { Product } from './models/product.model';
+import { CartService } from './cart.service';
+
 
 @Component({
   imports: [RouterOutlet, Header, ProductList],
@@ -14,21 +15,11 @@ import { Product } from './models/product.model';
 export class App {
   protected readonly title = signal('training-front');
   
-  cart = signal<Product[]>([]);
+  cart = inject(CartService);
   
-  onadd(product: Product): void {
-    this.cart.update((cart) => [...cart, product]);
-  } 
-
-  onClear(): void {
-    this.cart.set([]);
-  }
-
-
-
   constructor() {
   effect(() => {
-    console.log('Le panier a changé :', this.cart().length, 'article(s)'); // une ligne par changement
+    console.log('Le panier a changé :', this.cart.count(), 'article(s)'); // une ligne par changement
   });
 }
 }
