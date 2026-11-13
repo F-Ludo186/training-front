@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { catalog, Product } from '../products';
+import { Component , input, output} from '@angular/core';
+import { Product } from '../models/product.model';
 
 @Component({
   imports: [],
@@ -7,10 +7,13 @@ import { catalog, Product } from '../products';
   styleUrl: './product-card.css',
   templateUrl: './product-card.html',
 })
+
 export class ProductCard {
-  product: Product = catalog[4];
-  cartCount = 0;
-  addToCart(): void {
-    this.cartCount = this.cartCount + 1;
+  product = input.required<Product>();
+  quantity = input.required<number>();
+  addToCart = output<Product>();
+
+  onAddClick(): void { 
+    this.addToCart.emit(this.product());
   }
 }

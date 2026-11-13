@@ -25,8 +25,10 @@
       <li>Aucun produit à afficher</li>
     }
   </ul>
-
-  <app-product-card />
-  <app-product-card />
-  <app-product-card />
+  @for (p of visibleProducts; track p.id) {
+    <app-product-card 
+      [product]="p" 
+      [quantity]="quantityOf(p)" 
+      (addToCart)="addToCart.emit($event)"/>
+  }
 </section>
