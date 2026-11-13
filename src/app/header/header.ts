@@ -1,8 +1,9 @@
 import { Component , input, output, signal, computed} from '@angular/core';
 import { Product } from '../models/product.model';
+import { RouterLink  } from '@angular/router';
 
 @Component({
-  imports: [],
+  imports: [RouterLink ],
   selector: 'app-header',
   styleUrl: './header.css',
   templateUrl: './header.html',

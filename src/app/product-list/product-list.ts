@@ -2,9 +2,10 @@ import { Component, input ,output } from '@angular/core';
 import { ProductCard } from '../product-card/product-card';
 import { Product } from '../models/product.model';  
 import { catalog } from '../data/catalog';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [ProductCard],
+  imports: [ProductCard, RouterLink],
   selector: 'app-product-list',
   styleUrl: './product-list.css',
   templateUrl: './product-list.html',

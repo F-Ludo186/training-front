@@ -1,0 +1,14 @@
+<article class="product-detail">
+    @if (product(); as p) {
+        <img [src]="p.thumbnail" [alt]="p.title" />
+        <div>
+        <h2>{{ p.title }}</h2>
+        <p>{{ p.price }} €</p>
+        <p>Stock : {{ p.stock }}</p>
+        </div>
+} @else {
+  <h2>Produit introuvable</h2>
+}
+</article>
+
+

@@ -5,4 +5,9 @@
   <p>🛒 {{ count() }} article(s) pour un total de {{ total().toFixed(2) }} €</p>
   <p>{{ shipping() }}</p>
   <button (click)="clear.emit()">Vider le panier</button>
+  <nav>
+    <a routerLink ="/">Accueil</a>
+    <a routerLink="/account">Mon compte</a>
+    <a routerLink="/login">Connexion</a>
+  </nav>
 </header>
