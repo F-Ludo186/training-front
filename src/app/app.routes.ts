@@ -5,9 +5,11 @@ import { ProductDetail } from './product-detail/product-detail';
 import { Account } from './account/account';
 import { Login } from './login/login';
 import { authGuard } from './auth-guard';
+import { ProductForm } from './product-form/product-form';
 
 export const routes: Routes = [
   { path: '', component: Home },
+  { path: 'products/new', component: ProductForm },
   { path: 'products/:id', component: ProductDetail },
   { path: 'account', component: Account, canActivate: [authGuard] },
   { path: 'login', component: Login },
