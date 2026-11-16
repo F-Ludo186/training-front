@@ -1,2 +1,21 @@
-<h2>Mon compte</h2>
-<p>Tes commandes et ton adresse de livraison.</p>
+<section class="account">
+  @if (user(); as accountUser) {
+    <div class="account-layout">
+      <div class="account-copy">
+        <h2>Bonjour, {{ accountUser.firstName }} {{ accountUser.lastName }} !</h2>
+        <h3>Informations du compte</h3>
+        <div class="account-details">
+          <p><strong>Nom :</strong> {{ accountUser.lastName }}</p>
+          <p><strong>Prénom :</strong> {{ accountUser.firstName }}</p>
+          <p><strong>Adresse mail :</strong> {{ accountUser.email }}</p>
+        </div>
+      </div>
+      <img
+        class="account-avatar"
+        [src]="accountUser.image"
+        [alt]="'Avatar de ' + accountUser.firstName + ' ' + accountUser.lastName"
+      />
+    </div>
+    <p>Tes commandes et ton adresse de livraison.</p>
+  }
+</section>

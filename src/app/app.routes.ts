@@ -9,8 +9,8 @@ import { ProductForm } from './product-form/product-form';
 
 export const routes: Routes = [
   { path: '', component: Home },
-  { path: 'products/new', component: ProductForm },
-  { path: 'products/:id', component: ProductDetail },
+  { path: 'products/new', component: ProductForm ,canActivate: [authGuard] },
+  { path: 'products/:id', component: ProductDetail,canActivate: [authGuard]  },
   { path: 'login', component: Login },
   { path: 'account', component: Account, canActivate: [authGuard] },
   { path: '**', component: NotFound }

@@ -1,0 +1,33 @@
+.account-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(8rem, 12rem);
+  align-items: start;
+  gap: 2rem;
+}
+
+.account-copy h2 {
+  margin: 0;
+}
+
+.account-copy h3 {
+  margin-block: 1.5rem 1rem;
+}
+
+.account-details p {
+  margin: 0 0 1rem;
+}
+
+.account-avatar {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (max-width: 480px) {
+  .account-layout {
+    grid-template-columns: minmax(0, 1fr) 7rem;
+    gap: 1rem;
+  }
+}
