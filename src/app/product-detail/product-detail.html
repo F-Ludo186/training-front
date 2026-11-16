@@ -1,4 +1,9 @@
-@if (product(); as p) {
+<app-async-state
+    [loading]="loading()"
+    [error]="error()"
+    loadingText="Chargement du catalogue…"
+  >
+  @if (product(); as p) {
   <article class="product-detail">
     <img [src]="p.thumbnail" [alt]="p.title" />
     <div>
@@ -13,6 +18,7 @@
       <p>Dans ton panier : {{ cart.quantityOf(p) }}</p>
     </div>
   </article>
-} @else {
-  <h2>Produit introuvable</h2>
-}
+  } @else {
+    <h2>Produit introuvable</h2>
+  }
+</app-async-state>

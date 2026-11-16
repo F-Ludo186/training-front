@@ -1,0 +1,7 @@
+@if (loading()) {
+  <p>{{ loadingText() }}</p>
+} @else if (error(); as message) {
+  <p class="error">{{ message }}</p>
+} @else {
+  <ng-content />
+}

@@ -6,3 +6,10 @@ export type Product = {
   stock: number;
   availabilityStatus: 'In Stock' | 'Low Stock' | 'Out of Stock';
 };
+
+export type ProductsResponse = {
+  products: Product[];
+  total: number;
+  skip: number;
+  limit: number;
+};

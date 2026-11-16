@@ -23,7 +23,7 @@
     <button type="submit">Ajouter</button>
   </form>
 
-  @if (sent(); as product) {
+  @if (created(); as product) {
     <p>✅ Prêt à envoyer au serveur :</p>
     <pre>{{ product | json }}</pre>
   }
