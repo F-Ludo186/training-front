@@ -1,10 +1,12 @@
-import { Component , signal, inject} from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { RouterLink  } from '@angular/router';
 import { CartService } from '../cart.service';
 import { AuthService } from '../auth.service';
+import { Button } from '../shared/ui/button/button';
 
 @Component({
-  imports: [RouterLink ],
+  imports: [RouterLink, Button, NgOptimizedImage],
   selector: 'app-header',
   styleUrl: './header.css',
   templateUrl: './header.html',

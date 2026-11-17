@@ -1,14 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --color-salmon: #ee8b8b;
+  --color-salmon: #f26e6e;
+  --color-on-salmon: #331818;
   --color-white: #fff;
   --color-error: #b3261e;
   --color-error-background: #fff0f0;
-  --color-error-banner: #ff0419;
-  --color-error-banner-text: #fffdfd;
+  --color-error-banner: var(--color-error);
+  --color-error-banner-text: var(--color-white);
   --color-danger: #ea0404;
   --color-border: #ddd;
-  --color-input-border: #999;
+  --color-input-border: #242323;
   --color-focus-background: #fff8df;
   --color-focus-outline: #806000;
 

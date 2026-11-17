@@ -1,19 +1,19 @@
-<label [for]="id()">{{ label() }}</label>
+<label [attr.for]="inputId()">{{ label() }}</label>
 
 <input
     #field
-    [id]="id()"
+    [id]="inputId()"
     [type]="type()"
     [value]="value()"
     [disabled]="disabled()"
     [readonly]="readonly()"
     [required]="required()"
     [attr.aria-invalid]="invalid() && touched() ? 'true' : null"
-    [attr.aria-describedby]="invalid() && touched() ? id() + '-error' : null"
+    [attr.aria-describedby]="invalid() && touched() ? inputId() + '-error' : null"
     (input)="updateValue(field)"
     (blur)="touch.emit()"
 />
 
 @if (invalid() && touched() && errors().length > 0) {
-    <p [id]="id() + '-error'" role="alert">{{ errors()[0].message }}</p>
+    <p [id]="inputId() + '-error'" role="alert">{{ errors()[0].message }}</p>
 }

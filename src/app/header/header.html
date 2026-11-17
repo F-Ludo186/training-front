@@ -4,10 +4,15 @@
 
   <div class="cart-summary">
     <div class="cart-details">
-      <p>🛒 {{ cart.count() }} article(s) pour un total de {{ cart.total().toFixed(2) }} €</p>
-      <p>{{ shipping() }}</p>
+      <p aria-live="polite">🛒 {{ cart.count() }} article(s) pour un total de {{ cart.total().toFixed(2) }} €</p>
+      <p aria-live="polite">{{ shipping() }}</p>
     </div>
-    <button (click)="cart.clear()">Vider le panier</button>
+    <app-button (click)="cart.clear()"><img
+      ngSrc="/Icône%20panier%20avec%20croix%20svi.png"
+      alt="Vider le panier"
+      width="24"
+      height="24"
+    /></app-button>
   </div>
   
   <nav class="main-nav">

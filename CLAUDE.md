@@ -36,6 +36,7 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Do NOT use `ngStyle`, use `style` bindings instead
 - Do NOT import `CommonModule`, import only the directives and pipes the template uses, such as `AsyncPipe` or `DatePipe`
 - When using external templates/styles, use paths relative to the component TS file.
+- En Angular : jamais de tableau ou d'objet modifié sur place dans un signal, toujours une nouvelle valeur. Pour comparer deux objets venus d'une API, comparer leurs id. En Angular 22 et plus : les services avec @Service() et inject().
 
 ## State Management
 

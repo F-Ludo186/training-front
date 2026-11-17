@@ -11,7 +11,7 @@ import {
   styleUrl: './text-field.css',
 })
 export class TextField implements FormValueControl<string | number> {
-  readonly id = input.required<string>();
+  readonly inputId = input.required<string>();
   readonly label = input.required<string>();
   readonly type = input<'text' | 'email' | 'password' | 'number'>('text');
 

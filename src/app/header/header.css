@@ -1,7 +1,7 @@
 .header {
   padding: 5px 24px;
   background-color: var(--color-salmon);
-  color: var(--color-white);
+  color: var(--color-on-salmon);
 }
 
 .cart-summary {
@@ -28,7 +28,11 @@
 }
 
 .main-nav a {
-  color: var(--color-white);
+  color: var(--color-on-salmon);
+}
+
+.cart-summary app-button img {
+  filter: brightness(0) invert(1);
 }
 
 .auth-link {

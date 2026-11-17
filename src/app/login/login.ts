@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Credentials } from '../models/credentials';
-import { form, FormField, FormRoot, minLength, required } from '@angular/forms/signals';
+import { form, FormField, FormRoot, minLength, required, validate } from '@angular/forms/signals';
 import { FORM_CONTROLS } from '../shared/ui/form-controls';
 
 @Component({
@@ -22,6 +22,9 @@ export class Login {
     (path) => {
       required(path.username, { message: 'Le nom d\'utilisateur est obligatoire.' });
       minLength(path.username, 3, { message: '3 caractères au moins.' });
+      validate(path.username, ({ value }) =>
+        value().trim().length === 0 ? { kind: 'blank', message: 'Le nom d\'utilisateur ne peut pas être vide.' } : undefined,
+      );
       required(path.password, { message: 'Le mot de passe est obligatoire.' });
       minLength(path.password, 6, { message: '6 caractères au moins.' });
     },

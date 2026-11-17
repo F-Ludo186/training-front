@@ -1,19 +1,19 @@
 <section class="login-form">
-    <h2>Connexion</h2>
+    <h1>Connexion</h1>
     
     <p> Pour t'entraîner : emilys / emilyspass</p>
 
     <form [formRoot]="logginForm">
-        
+           
         <app-text-field
-            id="username"
+            inputId="username"
             label="Nom d'utilisateur"
             type="text"
             [formField]="logginForm.username"
         />
 
         <app-text-field
-            id="password"
+            inputId="password"
             label="Mot de passe"
             type="password"
             [formField]="logginForm.password"

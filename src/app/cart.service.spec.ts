@@ -28,37 +28,51 @@ describe('CartService', () => {
     service = TestBed.inject(CartService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('commence avec un panier vide et des totaux nuls', () => {
+    expect(service.count()).toBe(0);
+    expect(service.lines()).toEqual([]);
+    expect(service.total()).toBe(0);
+    expect(service.quantityOf(firstProduct)).toBe(0);
   });
 
-  it('groups products into lines and removes one matching item at a time', () => {
-    for (let quantity = 0; quantity < 5; quantity++) {
-      service.add(firstProduct);
-      service.add(secondProduct);
-    }
+  it('compte les unités et regroupe les objets ayant le même identifiant', () => {
+    const sameProductFromAnotherResponse = { ...firstProduct };
     service.add(firstProduct);
+    service.add(sameProductFromAnotherResponse);
+    service.add(secondProduct);
 
+    expect(service.count()).toBe(3);
+    expect(service.quantityOf(sameProductFromAnotherResponse)).toBe(2);
     expect(service.lines()).toEqual([
-      { product: firstProduct, quantity: 6 },
-      { product: secondProduct, quantity: 5 },
+      { product: firstProduct, quantity: 2 },
+      { product: secondProduct, quantity: 1 },
     ]);
-    expect(service.total()).toBe(115);
+    expect(service.total()).toBe(33);
+  });
 
-    service.removeOne(firstProduct);
+  it('retire une occurrence par identifiant et ignore un produit absent', () => {
+    service.add(firstProduct);
+    service.add({ ...firstProduct });
+    service.add(secondProduct);
 
-    expect(service.lines()).toEqual([
-      { product: firstProduct, quantity: 5 },
-      { product: secondProduct, quantity: 5 },
-    ]);
-    expect(service.total()).toBe(102.5);
+    service.removeOne({ ...firstProduct });
+    expect(service.quantityOf(firstProduct)).toBe(1);
+    expect(service.count()).toBe(2);
+    expect(service.total()).toBe(20.5);
 
-    service.removeOne(firstProduct);
+    service.removeOne({ ...firstProduct, id: 99 });
+    expect(service.quantityOf(firstProduct)).toBe(1);
+    expect(service.count()).toBe(2);
+  });
 
-    expect(service.lines()).toEqual([
-      { product: firstProduct, quantity: 4 },
-      { product: secondProduct, quantity: 5 },
-    ]);
-    expect(service.total()).toBe(90);
+  it('vide le panier et recalcule les signaux dérivés', () => {
+    service.add(firstProduct);
+    service.add(secondProduct);
+
+    service.clear();
+
+    expect(service.count()).toBe(0);
+    expect(service.lines()).toEqual([]);
+    expect(service.total()).toBe(0);
   });
 });

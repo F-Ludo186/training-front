@@ -9,7 +9,7 @@ export class AuthService {
     private readonly http = inject(HttpClient);
     private readonly url = 'https://dummyjson.com/auth';
 
-    readonly isLoggedIn = computed(() => this.token() !== null);
+    readonly isLoggedIn = computed(() => Boolean(this.token()?.trim()));
     readonly token = signal<string | null>(localStorage.getItem('token'));
 
     async login(username: string, password: string): Promise<void> {

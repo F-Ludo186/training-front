@@ -1,5 +1,5 @@
 .salmon {
-  color: var(--color-salmon);
+  color: var(--color-on-salmon);
 }
 
 :host {
@@ -135,6 +135,7 @@
   .social-links a:hover svg path {
     fill: var(--gray-900);
   }
+
 
   @media screen and (max-width: 650px) {
     .content {

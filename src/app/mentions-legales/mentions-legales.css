@@ -1,0 +1,67 @@
+.legal-notice {
+  box-sizing: border-box;
+  max-width: 56rem;
+  margin-inline: auto;
+  padding: 2rem 1.5rem 4rem;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.15;
+}
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.4rem;
+}
+
+section {
+  margin-block: 2rem;
+}
+
+p,
+li {
+  margin-block: 0 0.75rem;
+}
+
+ul {
+  padding-inline-start: 1.5rem;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) 2fr;
+  gap: 0.5rem 1rem;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin: 0;
+}
+
+a {
+  color: #1d4ed8;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.notice,
+.to-complete {
+  font-weight: 600;
+}
+
+@media (max-width: 40rem) {
+  dl {
+    grid-template-columns: 1fr;
+  }
+
+  dd {
+    margin-bottom: 0.75rem;
+  }
+}

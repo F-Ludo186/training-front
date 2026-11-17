@@ -17,41 +17,43 @@ describe('Cart', () => {
   };
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Cart],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(Cart);
+    await TestBed.configureTestingModule({ imports: [Cart] }).compileComponents();
     cart = TestBed.inject(CartService);
-    fixture.detectChanges();
+    cart.clear();
+    fixture = TestBed.createComponent(Cart);
     await fixture.whenStable();
   });
 
-  it('shows an empty message when the cart has no items', () => {
-    expect(fixture.nativeElement.textContent).toContain('Ton panier est vide.');
+  it('affiche un état vide lorsque le panier ne contient aucun article', () => {
+    expect(fixture.nativeElement.querySelector('[role="status"]')?.textContent).toContain('Ton panier est vide');
+    expect(fixture.nativeElement.querySelector('.cart-lines')).toBeNull();
   });
 
-  it('shows grouped quantities, subtotals and total, and removes one item', () => {
+  it('regroupe les produits identiques et calcule quantités, sous-totaux et total', async () => {
     cart.add(product);
     cart.add(product);
-    fixture.detectChanges();
+    await fixture.whenStable();
 
     const line = fixture.nativeElement.querySelector('.cart-line') as HTMLLIElement;
     const details = line.querySelectorAll('.cart-line-details dd');
-    const image = line.querySelector('.cart-product-image') as HTMLImageElement;
-    expect(fixture.nativeElement.querySelectorAll('.cart-line').length).toBe(1);
-    expect(image.getAttribute('src')).toBe(product.thumbnail);
+    expect(fixture.nativeElement.querySelectorAll('.cart-line')).toHaveLength(1);
+    expect((line.querySelector('img') as HTMLImageElement).getAttribute('src')).toBe(product.thumbnail);
     expect(details[1].textContent.trim()).toBe('2');
-    expect(details[2].textContent).toContain('20.00 €');
-    expect(fixture.nativeElement.querySelector('.cart-total strong').textContent).toContain('20.00 €');
+    expect(details[2].textContent).toContain('20.00');
+    expect(fixture.nativeElement.querySelector('.cart-total strong')?.textContent).toContain('20.00');
+  });
 
-    const removeButton = fixture.nativeElement.querySelector('.cart-line app-button button') as HTMLButtonElement;
-    removeButton.click();
-    fixture.detectChanges();
+  it('retire un seul exemplaire avec le bouton de ligne et recalcule le total', async () => {
+    cart.add(product);
+    cart.add(product);
+    await fixture.whenStable();
 
-    expect(cart.lines()[0].quantity).toBe(1);
-    expect(details[1].textContent.trim()).toBe('1');
-    expect(details[2].textContent).toContain('10.00 €');
-    expect(fixture.nativeElement.querySelector('.cart-total strong').textContent).toContain('10.00 €');
+    (fixture.nativeElement.querySelector('.cart-line app-button button') as HTMLButtonElement).click();
+    await fixture.whenStable();
+
+    expect(cart.quantityOf(product)).toBe(1);
+    const quantities = fixture.nativeElement.querySelectorAll('.cart-line-details dd');
+    expect(quantities[1].textContent).toContain('1');
+    expect(fixture.nativeElement.querySelector('.cart-total strong')?.textContent).toContain('10.00');
   });
 });

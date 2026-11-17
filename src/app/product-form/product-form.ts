@@ -22,6 +22,9 @@ export class ProductForm {
     (path) => {
       required(path.title, { message: 'Le nom est obligatoire.' });
       minLength(path.title, 3, { message: '3 caractères au moins.' });
+      validate(path.title, ({ value }) =>
+        value().trim().length === 0 ? { kind: 'blank', message: 'Le nom ne peut pas être composé uniquement d’espaces.' } : undefined,
+      );
       required(path.price, { message: 'Le prix est obligatoire.' });
       min(path.price, 0.01, { message: 'Le prix doit dépasser 0 €.' });
       required(path.stock, { message: 'Le stock est obligatoire.' });

@@ -1,23 +1,23 @@
-<section class="product-form">
-  <h2>Ajouter un produit</h2>
+<main class="product-form">
+  <h1>Ajouter un produit</h1>
 
   <form [formRoot]="productForm">
     <app-text-field
-        id="title"
+        inputId="title"
         label="Nom du produit"
         type="text"
         [formField]="productForm.title"
     />
 
     <app-text-field
-        id="price"
+        inputId="price"
         label="Prix (€)"
         type="number"
         [formField]="productForm.price"
     />
 
     <app-text-field
-        id="stock"
+        inputId="stock"
         label="Stock"
         type="number"
         [formField]="productForm.stock"
@@ -30,4 +30,4 @@
     <p>✅ Prêt à envoyer au serveur :</p>
     <pre>{{ product | json }}</pre>
   }
-</section>
+</main>

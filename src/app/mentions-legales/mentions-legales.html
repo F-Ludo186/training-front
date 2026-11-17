@@ -1,0 +1,90 @@
+<main class="legal-notice">
+  <h1>Mentions légales</h1>
+  <p class="notice">Certaines informations sont à compléter avant la mise en ligne publique.</p>
+
+  <section aria-labelledby="publisher-title">
+    <h2 id="publisher-title">Éditeur du site</h2>
+    <dl>
+      <dt>Éditeur</dt>
+      <dd>LF2026 <span class="to-complete">(forme juridique à préciser)</span></dd>
+      <dt>Directeur ou directrice de la publication</dt>
+      <dd class="to-complete">À compléter</dd>
+      <dt>Adresse</dt>
+      <dd class="to-complete">À compléter</dd>
+      <dt>Téléphone</dt>
+      <dd class="to-complete">À compléter</dd>
+      <dt>Contact pour les données personnelles</dt>
+      <dd><a href="mailto:mon&#64;mail.fr">mon&#64;mail.fr</a></dd>
+    </dl>
+    <p>
+      Responsable du traitement : LF2026, sous réserve de confirmation de son identité juridique.
+      Son adresse complète est à renseigner ci-dessus.
+    </p>
+  </section>
+
+  <section aria-labelledby="hosting-title">
+    <h2 id="hosting-title">Hébergement</h2>
+    <p class="to-complete">
+      Nom légal, adresse et coordonnées de l’hébergeur : à compléter avant la mise en ligne publique.
+    </p>
+  </section>
+
+  <section aria-labelledby="data-title">
+    <h2 id="data-title">Données traitées</h2>
+    <p>
+      Le site utilise DummyJSON, un service tiers, pour l’authentification et l’accès aux produits.
+      Les données suivantes sont traitées par l’application :
+    </p>
+    <ul>
+      <li>
+        <strong>Identifiants de connexion :</strong> le nom d’utilisateur et le mot de passe saisis
+        sont transmis en HTTPS à <code>dummyjson.com/auth/login</code> pour l’authentification.
+        L’application ne les enregistre pas dans le stockage du navigateur.
+      </li>
+      <li>
+        <strong>Jeton d’accès :</strong> le jeton renvoyé par DummyJSON est conservé dans le
+        <code>localStorage</code> du navigateur sous la clé <code>token</code>, jusqu’à la
+        déconnexion ou à son effacement manuel. Il est envoyé à DummyJSON dans l’en-tête
+        <code>Authorization</code> des requêtes vers ce service.
+      </li>
+      <li>
+        <strong>Panier :</strong> les articles et quantités restent en mémoire dans l’application.
+        Ils ne sont pas enregistrés de façon persistante ni transmis par le service de panier, et
+        sont perdus au rechargement de la page.
+      </li>
+    </ul>
+    <p>
+      Les identifiants sont utilisés pour l’authentification et le jeton pour maintenir la session
+      auprès de DummyJSON. La durée de conservation appliquée par DummyJSON relève de ce service et
+      reste à vérifier auprès de lui.
+    </p>
+    <p>
+      La base légale de ces traitements et les durées de conservation appliquées par l’éditeur
+      restent à préciser avant la mise en ligne publique.
+    </p>
+  </section>
+
+  <section aria-labelledby="cookies-title">
+    <h2 id="cookies-title">Cookies</h2>
+    <p>
+      Le code de ce site ne crée ni ne lit de cookies. Les requêtes vers DummyJSON n’activent pas
+      l’envoi de cookies tiers. Un éventuel cookie propre à DummyJSON, son nom, sa finalité et sa
+      durée n’ont pas été confirmés pour cette application ; ces informations sont à vérifier auprès
+      de ce service.
+    </p>
+  </section>
+
+  <section aria-labelledby="rights-title">
+    <h2 id="rights-title">Vos droits concernant vos données</h2>
+    <p>
+      Conformément au RGPD, vous pouvez demander l’accès à vos données, leur rectification ou leur
+      effacement, la limitation du traitement, vous y opposer et, lorsque les conditions sont
+      réunies, demander leur portabilité. Vous pouvez exercer ces droits auprès de
+      <a href="mailto:mon&#64;mail.fr">mon&#64;mail.fr</a>.
+    </p>
+    <p>
+      Vous pouvez également introduire une réclamation auprès de la
+      <a href="https://www.cnil.fr/fr/plaintes">CNIL</a>.
+    </p>
+  </section>
+</main>
