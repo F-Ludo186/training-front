@@ -9,6 +9,7 @@ import { ProductForm } from './product-form/product-form';
 
 export const routes: Routes = [
   { path: '', component: Home },
+  { path: 'cart', loadComponent: () => import('./cart/cart').then((module) => module.Cart) },
   { path: 'products/new', component: ProductForm ,canActivate: [authGuard] },
   { path: 'products/:id', component: ProductDetail,canActivate: [authGuard]  },
   { path: 'login', component: Login },

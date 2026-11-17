@@ -6,12 +6,12 @@
   margin: 8px;
   padding: 12px;
   position: relative;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   vertical-align: top;
 
   &:hover {
-    box-shadow: 0 0 8px #ea0404;
+    box-shadow: 0 0 8px var(--color-danger);
   }
 }
 
@@ -23,7 +23,7 @@
 }
 
 .product-card__link:focus-visible {
-  outline: 3px solid #ea0404;
+  outline: 3px solid var(--color-danger);
   outline-offset: 3px;
 }
 
@@ -50,8 +50,8 @@
   width: 100%;
   margin-top: 8px;
   padding: 8px;
-  background-color: #ea0404;
-  color: white;
+  background-color: var(--color-danger);
+  color: var(--color-white);
   border: none;
   border-radius: 10px;
 }

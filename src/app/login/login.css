@@ -9,16 +9,12 @@
   max-width: 320px;
 }
 
-.login-form button {
-  margin-top: 16px;
-}
-
 .error {
   margin: 0;
-  color: #fffdfd;
+  color: var(--color-error-banner-text);
   white-space: pre-line;
   text-align: center;
   padding: 8px ;
-  background-color: #ff0419;
+  background-color: var(--color-error-banner);
   border-radius: 20px;
 }

@@ -2,25 +2,28 @@
   <h2>Ajouter un produit</h2>
 
   <form [formRoot]="productForm">
-    <label for="title">Nom du produit</label>
-    <input id="title" [formField]="productForm.title" />
-    @if (productForm.title().touched() && productForm.title().errors()[0]; as error) {
-      <p class="error">{{ error.message }}</p>
-    }
+    <app-text-field
+        id="title"
+        label="Nom du produit"
+        type="text"
+        [formField]="productForm.title"
+    />
 
-    <label for="price">Prix (€)</label>
-    <input id="price" type="number" [formField]="productForm.price" />
-    @if (productForm.price().touched() && productForm.price().errors()[0]; as error) {
-      <p class="error">{{ error.message }}</p>
-    }
+    <app-text-field
+        id="price"
+        label="Prix (€)"
+        type="number"
+        [formField]="productForm.price"
+    />
 
-    <label for="stock">Stock</label>
-    <input id="stock" type="number" [formField]="productForm.stock" />
-    @if (productForm.stock().touched() && productForm.stock().errors()[0]; as error) {
-      <p class="error">{{ error.message }}</p>
-    }
+    <app-text-field
+        id="stock"
+        label="Stock"
+        type="number"
+        [formField]="productForm.stock"
+    />
 
-    <button type="submit">Ajouter</button>
+    <app-button type="submit">Ajouter</app-button>
   </form>
 
   @if (created(); as product) {

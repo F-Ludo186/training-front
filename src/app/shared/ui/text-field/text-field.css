@@ -1,0 +1,37 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+}
+
+label {
+  font-weight: 600;
+}
+
+input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-input-border);
+  border-radius: 12px;
+  background-color: var(--color-white);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+input:focus {
+  background-color: var(--color-focus-background);
+  border-color: var(--color-focus-outline);
+  outline: 2px solid var(--color-focus-outline);
+  outline-offset: 1px;
+}
+
+input[aria-invalid="true"] {
+  background-color: var(--color-error-background);
+  border-color: var(--color-error);
+}
+
+p {
+  margin: 0;
+  color: var(--color-error);
+}

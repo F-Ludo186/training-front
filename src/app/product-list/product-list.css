@@ -2,4 +2,4 @@
   padding: 24px;
 }
 
-.error { color: #b3261e; }
+.error { color: var(--color-error); }

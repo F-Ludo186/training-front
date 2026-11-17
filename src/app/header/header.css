@@ -1,8 +1,25 @@
 .header {
-  padding: 16px 24px;
-  background-color: #ee8b8b;
-  color: white;
+  padding: 5px 24px;
+  background-color: var(--color-salmon);
+  color: var(--color-white);
 }
+
+.cart-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cart-details p {
+  margin: 0;
+}
+
 .main-nav {
   display: flex;
   flex-wrap: wrap;
@@ -11,7 +28,7 @@
 }
 
 .main-nav a {
-  color: white;
+  color: var(--color-white);
 }
 
 .auth-link {

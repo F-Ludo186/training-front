@@ -3,9 +3,10 @@ import { FormField, FormRoot, form, min, minLength, required, validate } from '@
 import { JsonPipe } from '@angular/common';
 import { ProductApiService } from '../product-api.service';
 import { Product } from '../models/product.model';
+import { FORM_CONTROLS } from '../shared/ui/form-controls';
 
 @Component({
-  imports: [FormField, FormRoot, JsonPipe],
+  imports: [FormField, FormRoot, JsonPipe, ...FORM_CONTROLS],
   selector: 'app-product-form',
   styleUrl: './product-form.css',
   templateUrl: './product-form.html',

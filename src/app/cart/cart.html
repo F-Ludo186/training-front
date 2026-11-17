@@ -1,0 +1,47 @@
+<main class="cart-page">
+  <h1>Panier</h1>
+
+  @if (cart.lines().length === 0) {
+    <p class="empty-cart" role="status">Ton panier est vide.</p>
+  } @else {
+    <ul class="cart-lines" aria-label="Articles du panier">
+      @for (line of cart.lines(); track line.product.id) {
+        <li class="cart-line">
+          <img
+            class="cart-product-image"
+            [src]="line.product.thumbnail"
+            alt=""
+            width="80"
+            height="80"
+            loading="lazy"
+          />
+          <h2>{{ line.product.title }}</h2>
+
+          <dl class="cart-line-details">
+            <div>
+              <dt>Prix unitaire</dt>
+              <dd>{{ line.product.price.toFixed(2) }} €</dd>
+            </div>
+            <div>
+              <dt>Quantité</dt>
+              <dd>{{ line.quantity }}</dd>
+            </div>
+            <div>
+              <dt>Sous-total</dt>
+              <dd>{{ (line.product.price * line.quantity).toFixed(2) }} €</dd>
+            </div>
+          </dl>
+
+          <app-button type="button" (click)="cart.removeOne(line.product)">
+            Retirer un exemplaire
+          </app-button>
+        </li>
+      }
+    </ul>
+
+    <p class="cart-total">
+      <span>Total</span>
+      <strong>{{ cart.total().toFixed(2) }} €</strong>
+    </p>
+  }
+</main>

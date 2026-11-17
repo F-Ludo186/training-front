@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Credentials } from '../models/credentials';
 import { form, FormField, FormRoot, minLength, required } from '@angular/forms/signals';
-
+import { FORM_CONTROLS } from '../shared/ui/form-controls';
 
 @Component({
-  imports: [ FormRoot, FormField ],
+  imports: [FormRoot, FormField, ...FORM_CONTROLS],
   selector: 'app-login',
   styleUrl: './login.css',
   templateUrl: './login.html',

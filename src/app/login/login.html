@@ -1,23 +1,28 @@
 <section class="login-form">
     <h2>Connexion</h2>
-<p> Pour t'entraîner : emilys / emilyspass</p>
-    <form [formRoot]="logginForm">
-        <label for="username">Nom d'utilisateur</label>
-        <input id="username" [formField]="logginForm.username" />
-        @if (logginForm.username().touched() && logginForm.username().errors()[0]; as error) {
-            <p class="error">{{ error.message }}</p>
-        }
+    
+    <p> Pour t'entraîner : emilys / emilyspass</p>
 
-        <label for="password">Mot de passe</label>
-        <input id="password" type="password" [formField]="logginForm.password" />
-        @if (logginForm.password().touched() && logginForm.password().errors()[0]; as error) {
-            <p class="error">{{ error.message }}</p>
-        }
+    <form [formRoot]="logginForm">
         
+        <app-text-field
+            id="username"
+            label="Nom d'utilisateur"
+            type="text"
+            [formField]="logginForm.username"
+        />
+
+        <app-text-field
+            id="password"
+            label="Mot de passe"
+            type="password"
+            [formField]="logginForm.password"
+        />
+
         @if (error(); as message) {
             <p class="error">{{ message }}</p>
         }
 
-        <button type="submit">Se connecter</button>
+        <app-button type="submit">Se connecter</app-button>
     </form> 
 </section>

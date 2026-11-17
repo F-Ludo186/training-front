@@ -1,0 +1,19 @@
+<label [for]="id()">{{ label() }}</label>
+
+<input
+    #field
+    [id]="id()"
+    [type]="type()"
+    [value]="value()"
+    [disabled]="disabled()"
+    [readonly]="readonly()"
+    [required]="required()"
+    [attr.aria-invalid]="invalid() && touched() ? 'true' : null"
+    [attr.aria-describedby]="invalid() && touched() ? id() + '-error' : null"
+    (input)="updateValue(field)"
+    (blur)="touch.emit()"
+/>
+
+@if (invalid() && touched() && errors().length > 0) {
+    <p [id]="id() + '-error'" role="alert">{{ errors()[0].message }}</p>
+}

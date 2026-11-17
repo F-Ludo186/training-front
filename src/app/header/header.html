@@ -1,13 +1,18 @@
 <header class="header">
-  <h1>Training Shop</h1>
+  <h2>Training Shop</h2>
   <p>Le catalogue d'entraînement</p>
 
-  <p>🛒 {{ cart.count() }} article(s) pour un total de {{ cart.total().toFixed(2) }} €</p>
-  <p>{{ shipping() }}</p>
-  <button (click)="cart.clear()">Vider le panier</button>
+  <div class="cart-summary">
+    <div class="cart-details">
+      <p>🛒 {{ cart.count() }} article(s) pour un total de {{ cart.total().toFixed(2) }} €</p>
+      <p>{{ shipping() }}</p>
+    </div>
+    <button (click)="cart.clear()">Vider le panier</button>
+  </div>
   
   <nav class="main-nav">
     <a routerLink="/">Accueil</a>
+    <a routerLink="/cart">Panier</a>
     <a routerLink="/account">Mon compte</a>
 
     <a routerLink="/products/new">Ajouter un produit</a>
