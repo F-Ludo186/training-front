@@ -32,16 +32,16 @@ export class Login {
   );
 
   error = signal<string | null>(null); 
-  LoggIn = signal<Credentials | null>(null);
 
   async Loggin(): Promise<void> {
     this.error.set(null); // on efface l'échec précédent
     try {
       await this.authService.login(this.credentials().username, this.credentials().password);
-      this.LoggIn.set(this.credentials());
-      this.router.navigateByUrl('/account');
       this.logginForm().reset();
+      this.credentials.set({ username: '', password: '' });
+      this.router.navigateByUrl('/account');
     } catch {
+      this.credentials.update((credentials) => ({ ...credentials, password: '' }));
       this.error.set("La connexion a échoué.\nIdentifiant ou mot de passe incorrect.");
     }
   }

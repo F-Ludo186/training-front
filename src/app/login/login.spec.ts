@@ -48,7 +48,7 @@ describe('Login', () => {
     await submitCredentials('ada', 'secret1');
 
     expect(auth.login).toHaveBeenCalledWith('ada', 'secret1');
-    expect(fixture.componentInstance.LoggIn()).toEqual({ username: 'ada', password: 'secret1' });
+    expect(fixture.componentInstance.credentials()).toEqual({ username: '', password: '' });
     expect(navigate).toHaveBeenCalledWith('/account');
     expect(fixture.componentInstance.error()).toBeNull();
   });
@@ -73,6 +73,7 @@ describe('Login', () => {
 
     expect(fixture.componentInstance.error()).toContain('La connexion a échoué');
     expect(fixture.nativeElement.querySelector('.error')?.textContent).toContain('Identifiant ou mot de passe incorrect');
+    expect(fixture.componentInstance.credentials().password).toBe('');
   });
 
   it('affiche le refus quand le service renvoie une erreur HTTP 400', async () => {
@@ -123,7 +124,6 @@ describe('Login', () => {
     await submitCredentials('ada', 'secret1');
 
     expect(fixture.componentInstance.credentials().password).toBe('');
-    expect(fixture.componentInstance.LoggIn()?.password).not.toBe('secret1');
   });
 
   // Vérifie qu’un double clic pendant une requête en attente ne déclenche pas plusieurs tentatives de connexion.

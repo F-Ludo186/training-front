@@ -1,5 +1,7 @@
 # Plan de tests de training-front
 
+Dernière exécution : 74 tests réussis sur 74 (`npm.cmd test -- --watch=false`).
+
 | Fonctionnalité | Scénario | Entrée (jeu d'essai) | Attendu | Obtenu | Statut | Écart |
 |---|---|---|---|---|---|---|
 | Mon compte | Afficher le profil chargé | Ada Lovelace, ada@example.test | Profil et avatar affichés ; chargement terminé | Profil et avatar affichés ; `loading=false` | OK · Account › affiche le profil reçu et termine le chargement | — |
@@ -42,7 +44,7 @@
 | Connexion | Gérer une erreur HTTP 400 | `emilys / fauxxx`, erreur 400 simulée | Appel service et message d’identifiants incorrects | Appel valide ; message affiché | OK · Login › affiche le refus quand le service renvoie une erreur HTTP 400 | — |
 | Connexion (sécurité XSS) | Traiter l’identifiant HTML comme donnée | Username `<img src=x onerror=alert(1)>` | Payload transmis comme texte ; aucune image injectée | Payload transmis ; aucune image rendue | OK · Login › ne rend pas un payload HTML fourni dans le nom d’utilisateur | — |
 | Connexion (sécurité XSS) | Ne pas injecter le texte d’erreur | Erreur service `<img src=x onerror=alert(1)>` | Message générique ; aucun HTML injecté | Message générique ; aucune image rendue | OK · Login › n’insère pas un payload HTML reçu dans une erreur de connexion | — |
-| Connexion (sécurité) | Effacer les identifiants après connexion | `ada / secret1`, connexion réussie | Aucun mot de passe conservé en mémoire | `credentials().password` vaut encore `secret1` | KO · Login › ne conserve pas le mot de passe en mémoire après une connexion réussie | Le formulaire ne vide pas le signal `credentials` ; `LoggIn` conserve aussi les identifiants |
+| Connexion (sécurité) | Effacer les identifiants après connexion | `ada / secret1`, connexion réussie | Aucun mot de passe conservé en mémoire | Mot de passe effacé du signal après succès | OK · Login › ne conserve pas le mot de passe en mémoire après une connexion réussie | — |
 | Connexion (sécurité) | Empêcher les soumissions répétées en attente | Double événement submit pendant une promesse en attente | Une seule tentative | Une seule tentative | OK · Login › ne lance pas plusieurs connexions si le formulaire est soumis plusieurs fois pendant l’attente | — |
 | Mentions légales | Afficher sections et recours | Rendu du composant | Sections légales et lien CNIL présents | Titres attendus et lien CNIL présents | OK · MentionsLegales › affiche les sections légales et les moyens de contact et de recours | — |
 | Page introuvable | Expliquer l’erreur et proposer le retour | Rendu du composant | Titre et lien vers `/` | Titre et URL conformes | OK · NotFound › explique que la page est inconnue et fournit un lien de retour | — |
